@@ -1,3 +1,6 @@
+import { inRange } from "cypress/types/lodash";
+import IssueEditDetails from "../pages/IssueEditDetails";
+
 /**
  * Workshop #15
  * 1. Start creating classes for testable objects, such as "Issue"
@@ -31,6 +34,9 @@
  * 1. Previously created method will have more selectors included in the object (for example, assignees are added)
  */
 
+const statuses = ["Backlog", "Selected for development", "In progress", "Done"];
+
+
 describe('Issue details editing', () => {
   beforeEach(() => {
     cy.visit('/');
@@ -38,6 +44,29 @@ describe('Issue details editing', () => {
       cy.visit(url + '/board');
       cy.contains('This is an issue of type: Task.').click();
     });
+  });
+
+  it.skip('', () => {
+    cy.get('[data-testid="select:status"]').click('bottomRight');
+    cy.get('[data-testid="select-option:Done"]').click();
+    cy.get('[data-testid="select:status"]').should('have.text', 'Done');
+  });
+
+  it.skip('Check saving all statuses', () => {
+    for (const iterator of statuses) {
+      
+    }
+    cy.get(this.issueStatus).click('bottomRight');
+    cy.get(this.statusTypeDone).click();
+    cy.get(this.issueStatus).should('have.text', 'Done');
+  });
+
+  it.skip(`We are checking saving all possible priorities`, () => {
+    for (let priority1 of priorities) {
+      IssueDetailPage.getIssueDetailModal().within(() => {
+        IssueDetailPage.updateIssuePriorityTo(priority1);
+      });
+    }
   });
 
   it('Should update type, status, assignees, reporter, priority successfully', () => {

@@ -1,5 +1,5 @@
 /**
- * Workshop #16
+ * Workshop #17
  * We are locating issues here based on one enter ('multiple assignees')
  * Think and create a loop using "forEach", which would allow us to test multiple enters without creating a new instance of test for that
  * Use object with multiple rows for solving this task.
@@ -9,15 +9,39 @@
  * 2. You are running test X amount of times without creating new instance of test (using "it")
  */
 
+const getSearchInput = () => cy.get('[data-testid="board-filters"]').find('input');
+
 describe('Issue filtering', () => {
   beforeEach(() => {
     cy.visit('/');
   });
 
-  it('Should filter issues by title', () => {
+  it.only('Should filter issues by title', () => {
     getSearchInput().debounced('type', 'multiple assignee');
     cy.get('[data-testid="list-issue"]').should('have.length', '1');
   });
+
+  // Task #1 for .. of
+  const issueSearch = [
+    {
+      searchString: 'multiple assignees',
+      expectedNumberOfFoundIssues: '1'
+    },
+    {
+      searchString: 'try',
+      expectedNumberOfFoundIssues: '2'
+    },
+    {
+      searchString: '',
+      expectedNumberOfFoundIssues: '1'
+    },
+  ];
+
+  it('Check .......... ', () => {
+    for (const issue of issueSearch) {
+    }
+  });
+
 
   /**
    * New tests can be created here for practice
@@ -26,5 +50,5 @@ describe('Issue filtering', () => {
    * 3. Filter by "Recently Updated" button
    */
 
-  const getSearchInput = () => cy.get('[data-testid="board-filters"]').find('input');
+  
 });
