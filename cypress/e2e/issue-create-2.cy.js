@@ -2,7 +2,7 @@ describe('Issue create', () => {
   beforeEach(() => {
     cy.visit('/');
     cy.intercept('GET','**/currentUser').as('currentUserApiRequest')
-    cy.url().should('eq', 'https://jira.ivorreic.com/project').then((url) => {
+    cy.url().should('eq', `${Cypress.env('baseUrl')}project/board`).then((url) => {
       cy.wait('@currentUserApiRequest')
       cy.visit(url + '/settings?modal-issue-create=true');
     });
