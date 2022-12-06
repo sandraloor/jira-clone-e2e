@@ -104,7 +104,7 @@ class IssueEditDetails {
         cy.get(this.descriptionField).should('have.text', this.description);
     }
 
-    updateIssueTitleDescription() {
+    updateTitleAndDescription() {
         this.getIssueDetailsModal().within(() => {
             this.updateTitle();
             this.updateDescription();
@@ -144,6 +144,8 @@ class IssueEditDetails {
             this.assertTitleGone();
         });
     }
+
+
 }
 
 export default new IssueEditDetails()

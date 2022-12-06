@@ -48,7 +48,7 @@ describe('Issue details editing', () => {
   });
 
   it('Should update title, description successfully', () => {
-      IssueEditDetails.updateIssueTitleDescription(); // updates the issue title and description fields, clears and submits description, then saves description, and then asserts title and description fields
+      IssueEditDetails.updateTitleAndDescription(); // updates the issue title and description fields, clears and submits description, then saves description, and then asserts title and description fields
       cy.log('Result: Title field should display an adjective from @faker-js/faker and description field should display a hacker phrase from @faker-js/faker');
   });
 
