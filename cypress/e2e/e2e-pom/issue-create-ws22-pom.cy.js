@@ -17,13 +17,13 @@ describe('Deleting issue and Cancel deletion', () => {
     });
 
     it('Should delete an issue successfully', () => {
-        IssueEditDetails.findTrashIcon(); // finds Trash icon in the issue modal and clicks on it
+        IssueEditDetails.findAndClickTrashIcon(); // finds Trash icon in the issue modal and clicks on it
         IssueEditDetails.deleteIssueAndAssert(); // clicks on Delete button to confirm and asserts deleting
         cy.log('Result: An opened issue was deleted');
     });
 
     it('Start deletion process but cancel it', () => {
-        IssueEditDetails.findTrashIcon(); // finds Trash icon in the issue modal and clicks on it
+        IssueEditDetails.findAndClickTrashIcon(); // finds Trash icon in the issue modal and clicks on it
         IssueEditDetails.cancelDeletingAndAssert(); // clicks on Cancel button and asserts that the issue modal is visible
         cy.log('Result: Issue modal is visible');
     });

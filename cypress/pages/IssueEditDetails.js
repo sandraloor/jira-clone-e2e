@@ -34,7 +34,7 @@ class IssueEditDetails {
         return cy.get(this.confirmationModal);
     }
 
-    changeIssueType() {
+    changeTypeToStory() {
         cy.get(this.issueType).click('bottomRight');
         cy.get(this.issueTypeStory)
             .trigger('mouseover')
@@ -42,13 +42,13 @@ class IssueEditDetails {
         cy.get(this.issueType).should('contain', 'Story');
     }
 
-    changeIssueStatus() {
+    changeStatusToDone() {
         cy.get(this.issueStatus).click('bottomRight');
         cy.get(this.statusTypeDone).click();
         cy.get(this.issueStatus).should('have.text', 'Done');
     }
 
-    changeAssignees() {
+    changeAssigneesToBabyYodaAndLordGaben() {
         cy.get(this.assignee).click('bottomRight');
         cy.get(this.assigneeLordGaben).click();
         cy.get(this.assignee).click('bottomRight');
@@ -57,14 +57,14 @@ class IssueEditDetails {
         cy.get(this.assignee).should('contain', 'Lord Gaben');  
     }
 
-    changeReporter() {
+    changeReporterToPickleRick() {
         cy.get(this.reporter).click('bottomRight');
         cy.get(this.assigneePickleRick).click();
         cy.get(this.reporter).should('have.text', 'Pickle Rick');
   
     }
 
-    changePriority() {
+    changePriorityToMedium() {
         cy.get(this.issuePriority).click('bottomRight');
         cy.get(this.priorityMedium).click();
         cy.get(this.issuePriority).should('have.text', 'Medium');
@@ -72,11 +72,11 @@ class IssueEditDetails {
 
     updateIssue() {
         this.getIssueDetailsModal().within(() => {
-            this.changeIssueType();
-            this.changeIssueStatus();
-            this.changeAssignees();
-            this.changeReporter();
-            this.changePriority();
+            this.changeTypeToStory();
+            this.changeStatusToDone();
+            this.changeAssigneesToBabyYodaAndLordGaben();
+            this.changeReporterToPickleRick();
+            this.changePriorityToMedium();
         });
     }
 
@@ -131,7 +131,7 @@ class IssueEditDetails {
         cy.contains('This is an issue of type: Task.').should('not.exist');
     }
 
-    findTrashIcon() {
+    findAndClickTrashIcon() {
         this.getIssueDetailsModal().within(() => {
             this.clickTrashIcon();
         });

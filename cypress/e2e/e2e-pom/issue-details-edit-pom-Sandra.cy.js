@@ -50,7 +50,7 @@ describe('Issue details editing', () => {
   });
 
   it('Should delete an issue successfully', () => {
-      IssueEditDetails.findTrashIcon(); // finds Trash icon in the issue modal and clicks on it
+      IssueEditDetails.findAndClickTrashIcon(); // finds Trash icon in the issue modal and clicks on it
       IssueEditDetails.deleteIssueAndAssert(); // clicks on Delete button to confirm and asserts deleting
       cy.log('Result: An opened issue was deleted');
   });
