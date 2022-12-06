@@ -14,11 +14,7 @@ import { faker } from '@faker-js/faker';
 describe('Issue create', () => {
     beforeEach(() => {
         cy.visit('/');
-        cy.intercept('GET', '**/currentUser').as('currentUserApiRequest')
-        cy.url().should('eq', `${Cypress.env('baseUrl')}project`).then((url) => {
-            cy.wait('@currentUserApiRequest')
-            cy.visit(url + '/settings?modal-issue-create=true');
-        });
+          cy.contains('This is an issue of type: Task.').click();
     });
 
 

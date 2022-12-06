@@ -36,11 +36,8 @@ import IssueEditDetails from "../../pages/IssueEditDetails";
 describe('Issue details editing', () => {
   beforeEach(() => {
     cy.visit('/');
-    cy.url().should('eq', `${Cypress.env('baseUrl')}project/board`).then((url) => {
-      cy.visit(url + '/board');
-      cy.contains('This is an issue of type: Task.').click();
-    });
-  });
+    cy.contains('This is an issue of type: Task.').click();
+});
 
   it('Should update type, status, assignees, reporter, priority successfully', () => {
       IssueEditDetails.updateIssue(); // changes issue type to Story and issue status to Done, adds Lord Gaben and Baby Yoda as assignees, then changes reporter to Pickle Rick and priority to Medium
@@ -53,7 +50,7 @@ describe('Issue details editing', () => {
   });
 
   it('Should delete an issue successfully', () => {
-      IssueEditDetails.deleteIssueFindTrashIcon(); // finds Trash icon in the issue modal and clicks on it
+      IssueEditDetails.findTrashIcon(); // finds Trash icon in the issue modal and clicks on it
       IssueEditDetails.deleteIssueAndAssert(); // clicks on Delete button to confirm and asserts deleting
       cy.log('Result: An opened issue was deleted');
   });

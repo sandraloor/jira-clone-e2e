@@ -10,21 +10,22 @@
 
  import IssueEditDetails from "../../pages/IssueEditDetails";
 
-describe('Issue create', () => {
+describe('Deleting issue and Cancel deletion', () => {
     beforeEach(() => {
         cy.visit('/');
-          cy.contains('This is an issue of type: Task.').click();
+        cy.contains('This is an issue of type: Task.').click();
     });
 
     it('Should delete an issue successfully', () => {
-        IssueEditDetails.deleteIssueFindTrashIcon(); // finds Trash icon in the issue modal and clicks on it
+        IssueEditDetails.findTrashIcon(); // finds Trash icon in the issue modal and clicks on it
         IssueEditDetails.deleteIssueAndAssert(); // clicks on Delete button to confirm and asserts deleting
         cy.log('Result: An opened issue was deleted');
     });
 
     it('Start deletion process but cancel it', () => {
-        IssueEditDetails.deleteIssueFindTrashIcon(); // finds Trash icon in the issue modal and clicks on it
-
+        IssueEditDetails.findTrashIcon(); // finds Trash icon in the issue modal and clicks on it
+        IssueEditDetails.cancelDeletingAndAssert(); // clicks on Cancel button and asserts that the issue modal is visible
+        cy.log('Result: Issue modal is visible');
     });
 
 });

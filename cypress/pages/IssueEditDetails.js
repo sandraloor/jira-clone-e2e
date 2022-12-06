@@ -115,7 +115,7 @@ class IssueEditDetails {
         });
     }
 
-    findTrashIcon() {
+    clickTrashIcon() {
         cy.get(`button ${this.trashIcon}`).click();
     }
 
@@ -131,9 +131,9 @@ class IssueEditDetails {
         cy.contains('This is an issue of type: Task.').should('not.exist');
     }
 
-    deleteIssueFindTrashIcon() {
+    findTrashIcon() {
         this.getIssueDetailsModal().within(() => {
-            this.findTrashIcon();
+            this.clickTrashIcon();
         });
     }
 
@@ -145,6 +145,11 @@ class IssueEditDetails {
         });
     }
 
+    cancelDeletingAndAssert() {
+        cy.get(this.confirmationModal).contains('button', 'Cancel').click();
+        //cy.get(this.confirmationModal).should('not exist');
+        cy.get(this.issueDetailsModal).should('be.visible');
+    }
 
 }
 
